@@ -32,6 +32,16 @@ DIMENSIONS: list[tuple[str, float, str]] = [
     ("warunki", 0.10, "lokalizacja, tryb pracy, forma zatrudnienia i widełki względem sytuacji kandydata"),
 ]
 
+# Score cutoffs for the displayed verdict, checked against a labelled sample
+# (scripts/evaluate_scoring.py): 80% exact agreement, 100% within one step.
+#
+# --sweep reports 90% at RECOMMEND_THRESHOLD=82, but that is overfitting: 82 is
+# exactly the highest score in the 20-offer sample, so on a run whose best
+# offer scores 79 nothing would ever be recommended. Kept at a value that
+# still fires on ~25% of the shortlist.
+RECOMMEND_THRESHOLD = 72
+CONSIDER_THRESHOLD = 55
+
 RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {
@@ -162,6 +172,22 @@ def _combine(dimension_scores: dict) -> int:
     return round(total)
 
 
+def verdict_from_score(score: int) -> str:
+    """Derive the verdict from the computed score instead of trusting the
+    model's own label.
+
+    Left to the model, the verdict barely discriminated -- 19 of 25 offers
+    came back "polecam" even though their scores spanned 46-82. The score
+    itself is well spread, so deriving the label from it makes the two
+    consistent and removes one more thing a 14B model can get wrong.
+    """
+    if score >= RECOMMEND_THRESHOLD:
+        return "polecam"
+    if score >= CONSIDER_THRESHOLD:
+        return "rozważ"
+    return "odradzam"
+
+
 def score_job_deep(cv: CVProfileStructured, job: JobPosting) -> dict:
     client = ollama.Client(host=OLLAMA_HOST) if OLLAMA_HOST else ollama.Client()
     response = client.chat(
@@ -177,6 +203,10 @@ def score_job_deep(cv: CVProfileStructured, job: JobPosting) -> dict:
     dimension_scores = data.get("scores") or {}
     data["scores"] = dimension_scores
     data["score"] = _combine(dimension_scores)
+    # Keep what the model itself said -- it is the interesting signal for
+    # eval/reports (see scripts/evaluate_scoring.py), just not what we show.
+    data["model_verdict"] = data.get("verdict")
+    data["verdict"] = verdict_from_score(data["score"])
     return data
 
 
