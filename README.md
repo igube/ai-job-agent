@@ -27,6 +27,9 @@ CV (PDF)  ──►  parser offline  ──►  strukturyzacja (LLM)  ──► 
 | 5 | Agent spina etapy i podsumowuje | lokalny |
 | 6 | Dashboard (Streamlit) | brak |
 
+## Screeny z działania aplikacji
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/e2a672c4-7f16-435d-8a7a-13112836116b" />
+
 ## Źródła ofert
 
 Żaden z tych portali nie udostępnia publicznej dokumentacji API — każde źródło
