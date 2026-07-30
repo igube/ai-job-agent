@@ -181,6 +181,8 @@ Testy od razu zarobiły na siebie: wyłapały, że regex nie rozpoznawał odmian
 - **Model 14B waha się między przebiegami.** Wyliczanie werdyktu z progów mocno to
   ograniczyło (45% → 80% zgodności), ale same oceny punktowe wciąż drgają.
 
-## Licencja
+## Author
 
-MIT
+Igor Grobelski  
+GitHub: https://github.com/igube
+
