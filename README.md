@@ -89,6 +89,42 @@ LinkedIn **świadomie pominąłem**: jego regulamin wprost zakazuje automatyczne
 zbierania danych, w przeciwieństwie do pozostałych źródeł.
 → [`rate_limit.py`](src/job_agent/job_scraping/rate_limit.py)
 
+## Czy to w ogóle działa? (ewaluacja)
+
+„Wyniki wyglądają sensownie" to nie pomiar, więc jest zbiór referencyjny i skrypt
+liczący zgodność:
+
+```bash
+.venv\Scripts\python scripts\evaluate_scoring.py --sweep
+```
+
+Na 20 realnych ofertach z jednego przebiegu (etykiety — patrz zastrzeżenie niżej):
+
+| Metryka | Wynik |
+|---|---|
+| Zgodność dokładna | **80%** |
+| Zgodność ±1 stopień | **100%** |
+| Werdykt podany przez model 14B wprost | 45% |
+
+**Najważniejszy wniosek:** poproszony wprost o werdykt, model 14B trafiał w 45%
+przypadków. Wyliczanie werdyktu z progów oceny punktowej podniosło to do 80% —
+model dobrze *punktuje*, ale źle *etykietuje*, więc etykietowanie przeniosłem do kodu.
+
+**Charakter pomyłek jest bezpieczny.** Zero rozbieżności o dwa stopnie — system
+nigdy nie poleca czegoś, co należy odrzucić. Wszystkie 4 błędy to sąsiednie
+kategorie, i wszystkie w stronę optymizmu (np. staż w Samsungu wymagający PyTorch
+i pandas dostał „polecam" zamiast „rozważ").
+
+**Progi wybrane wbrew sweepowi.** `--sweep` znajduje 90% przy progu 82, ale 82 to
+dokładnie maksimum w próbce — przy przebiegu, gdzie najlepsza oferta ma 79, nic nie
+dostałoby rekomendacji. Zostawiłem 72, bo działa na ~25% listy i nie jest dopasowane
+do 20 przypadków.
+
+> **Zastrzeżenie:** etykiety referencyjne pochodzą od silniejszego modelu
+> (*stronger model as reference judge*), nie od właściciela CV. Mierzą więc
+> zgodność modelu 14B z lepszym modelem, nie z ludzkim gustem. Żeby zmierzyć to
+> drugie, wystarczy nadpisać `eval/reference_labels.json` własnymi ocenami.
+
 ## Uruchomienie
 
 Wymagania: Python 3.12, [Ollama](https://ollama.com).
@@ -117,8 +153,8 @@ podnosi Ollamę, jeśli nie działa.
 .venv\Scripts\python -m pytest
 ```
 
-32 testy pokrywają część deterministyczną — filtr trafności, wnioskowanie poziomu,
-dopasowanie lokalizacji i deduplikację. Warstwa LLM jest celowo poza testami
+50 testów pokrywa część deterministyczną — filtr trafności, wnioskowanie poziomu,
+dopasowanie lokalizacji, deduplikację i wyliczanie werdyktu. Warstwa LLM jest celowo poza testami
 (niedeterministyczna), ale wszystko, co ją otacza, jest sprawdzalne.
 
 Testy od razu zarobiły na siebie: wyłapały, że regex nie rozpoznawał odmiany
@@ -129,7 +165,7 @@ Testy od razu zarobiły na siebie: wyłapały, że regex nie rozpoznawał odmian
 - **5** portali, ~650 ofert w jednym przebiegu
 - **~60 s** pełny cykl (model w VRAM), ~3 min przy zimnym starcie
 - **0 zł** kosztów — model lokalny, RTX 5070 Ti
-- **2800** linii Pythona
+- **3200** linii Pythona, **50** testów
 
 ## Świadome ograniczenia
 
@@ -139,10 +175,11 @@ Testy od razu zarobiły na siebie: wyłapały, że regex nie rozpoznawał odmian
   gdzie trzeba decydować o poszerzaniu kryteriów.
 - **Brak historii przebiegów.** Każde uruchomienie zaczyna od zera — nie wiadomo,
   które oferty są nowe od wczoraj.
-- **Brak pomiaru jakości ocen.** Nie ma zbioru referencyjnego, więc nie wiem,
-  w ilu procentach model zgadza się z moją własną oceną.
-- **Model 14B waha się między przebiegami** — wynik liczbowy różnicuje dobrze,
-  ale sam werdykt (polecam/rozważ) bywa niestabilny.
+- **Zbiór referencyjny liczy 20 ofert i pochodzi od modelu, nie ode mnie.**
+  Za mało, by rzetelnie dobrać progi (patrz sekcja o ewaluacji), i mierzy zgodność
+  z lepszym modelem, nie z moim gustem.
+- **Model 14B waha się między przebiegami.** Wyliczanie werdyktu z progów mocno to
+  ograniczyło (45% → 80% zgodności), ale same oceny punktowe wciąż drgają.
 
 ## Licencja
 
