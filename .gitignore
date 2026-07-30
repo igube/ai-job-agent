@@ -1,0 +1,20 @@
+# --- dane osobowe: NIGDY nie commitować ---
+# Wgrane CV zawiera imię, telefon, e-mail i adres.
+cv/
+*.pdf
+# Wyniki pipeline'u zawierają sparsowane dane z CV.
+data/
+.env
+
+# --- środowisko ---
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+
+# --- lokalne ustawienia narzędzi ---
+.claude/
+.idea/
+.vscode/
