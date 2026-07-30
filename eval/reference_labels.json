@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "purpose": "Reference labels for measuring the local scorer's judgment quality.",
+    "labelled_by": "claude-opus-5 (stronger model used as reference judge)",
+    "labelled_at": "2026-07-28",
+    "candidate_profile": "Student e-biznesu (SGH, Warszawa). Cel: staż lub junior w AI automation / AI operations. Umie: Python (skrypty, API), OpenAI API, Docker, GitHub, workflow automation, narzędzia marketingowe. NIE umie: ML (PyTorch/pandas), frontend (JS/React), SQL, Kubernetes, języki obce poza angielskim B2.",
+    "label_scale": "polecam | rozważ | odradzam",
+    "criteria": "Czy kandydat realnie ma szansę dostać tę pracę I czy praca przybliża go do celu z CV. Twardy blocker (wymagany język obcy, stack całkowicie nieznany) => odradzam.",
+    "caveat": "To NIE są oceny właściciela CV. Mierzą zgodność modelu 14B z silniejszym modelem, nie z człowiekiem. Aby zmierzyć zgodność z własnym gustem, nadpisz te etykiety swoimi."
+  },
+  "labels": [
+    {
+      "title": "Young Talents program AI NextGen / Program stażowy AI Next Gen",
+      "company": "Polpharma S.A.",
+      "label": "polecam",
+      "reason": "Staż wprost o AI, automatyzacji i analizie danych. Warszawa, program rotacyjny = nauka. Wymagany angielski B2 pokrywa się z CV."
+    },
+    {
+      "title": "Automation & AI Intern",
+      "company": "ERGY sp. z o.o.",
+      "label": "polecam",
+      "reason": "Najbliższy celowi z CV: automatyzacja procesów + AI, n8n i Python. Poziom stażowy, Warszawa."
+    },
+    {
+      "title": "Program Stażowy Magenta Start - Low-Code Developer - Power Platform/AI (DCS)",
+      "company": "T-Mobile",
+      "label": "polecam",
+      "reason": "Staż celowany w studentów łączących IT z biznesem (czyli e-biznes). Wymaga tylko podstaw programowania. Low-code blisko automatyzacji."
+    },
+    {
+      "title": "Analityk automatyzacji procesów i agentów AI Automation",
+      "company": "Pekao CoNext",
+      "label": "polecam",
+      "reason": "Tytuł to dokładnie cel z CV (automatyzacja procesów, agenci AI). Poziom junior, Warszawa."
+    },
+    {
+      "title": "Internship - Python AI Development Intern",
+      "company": "Samsung R&D Institute Poland",
+      "label": "rozważ",
+      "reason": "Świetna marka i kierunek, ale wymaga PyTorch, numpy, pandas i wiedzy ML. Python kandydata to skrypty i API, nie ML. Realnie duży rozstrzał."
+    },
+    {
+      "title": "Fullstack Python Developer – AI-First (K/M)",
+      "company": "ONEAU Sp. z o.o.",
+      "label": "rozważ",
+      "reason": "Praca z asystą AI (Cursor) pasuje do profilu, ale to rola fullstack: Flask, SQL, OWASP. Brak tych kompetencji w CV."
+    },
+    {
+      "title": "Junior AI Content and Product Creator",
+      "company": "DreamAI Technologies",
+      "label": "rozważ",
+      "reason": "Narzędzia AI plus tło marketingowe kandydata się zgrywają, ale to rola contentowa, nie inżynieria automatyzacji. Remote na plus."
+    },
+    {
+      "title": "Data Engineer with AI Focus",
+      "company": "CLOUDFIDE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+      "label": "rozważ",
+      "reason": "Dziedzina pokrewna i remote, ale wymaga Azure, Databricks i SQL. Z CV pokrywa się tylko Python."
+    },
+    {
+      "title": "Administrator Platformy AI (Junior) (m/k)",
+      "company": "B2B.NET S.A.",
+      "label": "odradzam",
+      "reason": "Klasyczny 'junior' z wymaganiami seniora: Kubernetes, Helm, ArgoCD, vLLM. Kandydat ma z tego wyłącznie Dockera."
+    },
+    {
+      "title": "Junior Machine Learning Engineer (Data Platform)",
+      "company": "Allegro",
+      "label": "odradzam",
+      "reason": "Wymaga PyTorch, FastAPI, Javy, Kotlina i Reacta oraz pracy na platformach ML dużej skali. Poza zasięgiem tego CV."
+    },
+    {
+      "title": "Frontend Developer / AI Automation Specialist (k/m)",
+      "company": "REESCO sp. z o.o.",
+      "label": "odradzam",
+      "reason": "Twardym wymogiem jest JavaScript/TypeScript i React. Kandydat nie ma żadnego doświadczenia frontendowego."
+    },
+    {
+      "title": "Junior Tech Specialist",
+      "company": "VERCLY sp. z o.o.",
+      "label": "odradzam",
+      "reason": "Stack Golang, HTMX, Templ, Docker Swarm nieznany kandydatowi. Rola wsparcia technicznego, nie AI."
+    },
+    {
+      "title": "Internship - Software Security Intern",
+      "company": "Samsung R&D Institute Poland",
+      "label": "odradzam",
+      "reason": "Wymaga C, C++ lub Javy i zaawansowanej znajomości Androida. Bezpieczeństwo aplikacji to inna ścieżka niż AI automation."
+    },
+    {
+      "title": "Junior IT Recruiter (AI-First Startup)",
+      "company": "Klient rocketjobs.pl",
+      "label": "odradzam",
+      "reason": "Rola rekrutacyjna (HR), nie techniczna. 'AI-First' dotyczy firmy, nie zadań. Rozmija się z celem z CV."
+    },
+    {
+      "title": "Młodszy Specjalista ds. Social Media & Wideo (Instagram / Rolki / AI)",
+      "company": "Barber_Wesoła",
+      "label": "odradzam",
+      "reason": "Social media dla lokalnego barbera. AI tylko jako narzędzie do treści. Nie buduje kompetencji AI automation."
+    },
+    {
+      "title": "AI Data Annotation Specialist with Norwegian",
+      "company": "TELUS Digital AI",
+      "label": "odradzam",
+      "reason": "Twardy blocker: wymagana pełna znajomość norweskiego."
+    },
+    {
+      "title": "AI Data Annotation Specialist with Czech",
+      "company": "TELUS Digital AI",
+      "label": "odradzam",
+      "reason": "Twardy blocker: wymagana pełna znajomość czeskiego."
+    },
+    {
+      "title": "AI Data Annotation Specialist with Greek",
+      "company": "TELUS Digital AI",
+      "label": "odradzam",
+      "reason": "Twardy blocker: wymagana biegłość w greckim."
+    },
+    {
+      "title": "AI Data Annotation Specialist with Finnish",
+      "company": "TELUS Digital AI",
+      "label": "odradzam",
+      "reason": "Twardy blocker: wymagana pełna znajomość fińskiego."
+    },
+    {
+      "title": "AI Data Annotation Specialist with Danish",
+      "company": "TELUS Digital AI",
+      "label": "odradzam",
+      "reason": "Twardy blocker: wymagana pełna znajomość duńskiego."
+    }
+  ]
+}
