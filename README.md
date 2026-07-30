@@ -6,7 +6,11 @@ każdą ofertę względem mojego CV i przedstawia wynik w dashboardzie.
 **Wszystko działa lokalnie — bez klucza API i bez kosztów.** Ocenę wykonuje model
 `qwen2.5:14b-instruct` uruchomiony przez Ollamę na własnym GPU.
 
-<!-- TODO: zrzut ekranu dashboardu -->
+
+## Screeny z działania agenta
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/e2a672c4-7f16-435d-8a7a-13112836116b" />
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/cbffa3fa-f9dc-402c-97eb-7cf6262c5f25" />
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/77af88c5-d997-4cd5-8c8a-7f1664053e05" />
 
 ## Co robi
 
@@ -26,9 +30,6 @@ CV (PDF)  ──►  parser offline  ──►  strukturyzacja (LLM)  ──► 
 | 4 | Filtr poziomu i lokalizacji, potem ocena 5-wymiarowa | lokalny |
 | 5 | Agent spina etapy i podsumowuje | lokalny |
 | 6 | Dashboard (Streamlit) | brak |
-
-## Screeny z działania aplikacji
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/e2a672c4-7f16-435d-8a7a-13112836116b" />
 
 ## Źródła ofert
 
