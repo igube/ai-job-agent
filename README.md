@@ -121,9 +121,9 @@ dostałoby rekomendacji. Zostawiłem 72, bo działa na ~25% listy i nie jest dop
 do 20 przypadków.
 
 > **Zastrzeżenie:** etykiety referencyjne pochodzą od silniejszego modelu
-> (*stronger model as reference judge*), nie od właściciela CV. Mierzą więc
+> (*stronger model as reference judge*). Mierzą więc
 > zgodność modelu 14B z lepszym modelem, nie z ludzkim gustem. Żeby zmierzyć to
-> drugie, wystarczy nadpisać `eval/reference_labels.json` własnymi ocenami.
+> drugie, wystarczy nadpisać `eval/reference_labels.json`.
 
 ## Uruchomienie
 
