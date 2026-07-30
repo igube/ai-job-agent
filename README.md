@@ -40,9 +40,9 @@ wymagało własnego podejścia.
 | theprotocol.it | `__NEXT_DATA__` z SSR | filtry poziomu w ścieżce URL |
 | pracuj.pl | Playwright (Cloudflare) | limit 1×/24h, wymuszony w kodzie |
 
-## Ciekawsze problemy inżynierskie
+## Napotkane problemy
 
-Te fragmenty powstały w reakcji na konkretne awarie, nie „na zapas".
+Te fragmenty powstały w reakcji na konkretne awarie.
 
 **Filtr trafności ma dwa poziomy, bo oferta z branży fashion dostała 85% dopasowania.**
 Ogłoszenie *„Młodszy Specjalista ds. Rozwoju Marki"* przechodziło filtr, bo w opisie
